@@ -97,7 +97,14 @@ $.getJSON("ChicagoHardshipIndex.geojson", function(data) {
 	
 </script>
 
+<script>
+//geoJSON 2 - Grocery Stores going to add as markers first before styling
 
+$.getJSON("GroceryStoresChicago.geojson", function(data) {
+	L.geoJson(data).addTo(map);
+});
+	
+</script>
 
 
 </body>
