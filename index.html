@@ -49,11 +49,11 @@
 
  <script>
 
- 	//intializing map
+ //intializing map
 
  	var map = L.map('map').setView([41.881,-87.623],11);
 
- 	//basemap layer
+ //basemap layer
 
 var Stamen_TonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
 	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -72,18 +72,9 @@ $.getJSON("ChicagoHardshipIndex.geojson", function(data) {
 //geoJson 2 Grocery Stores
 
 $.getJSON("GroceryStoresChicago.geojson", function(data) {
-	L.geoJson(data),{
-		pointToLayer: function(feature, latlng) {
-			return new L.CircleMarker(latlng, 
-				{	radius: 3,
-					fillOpacity: 1,
-					color: '#FF6600',
-					weight: .5, 
-				});
-			}).addTo(map);
-		};
+	L.geoJson(data).addTo(map);
 
-
+//having trouble with changing features - uploading to github to check if GeoJSONs have loaded
  </script>
 
 
