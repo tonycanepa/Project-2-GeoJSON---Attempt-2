@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>UPP 465 - Tony Canepa - Project 2 WebPage 2.0</title>
+<link rel="stylesheet" href="tonycanepastyle.css">
+
+<!-- Leaflet Links -->
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+
+ <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+
+   <!-- leaflet basemap layers -->
+
+ <script src="js/leaflet-providers.js"></script>
+
+ <!-- Add jQuery/ajax  -->
+<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+
+<!-- Basic Introduction to website -->
+
+<div class="intro">
+<h1>Project 2</h1>
+<p>Chicago Hardship Index in Relation to Grocery Stores.</p>
+</div>
+
+<div class="webmapintro">
+	<p> Below is the Leaflet Map created by Tony Canepa for Project 2 which identifies community areas Hardship Index in relation to where Grocery Stores are located. </p>
+</div>
+
+ <div id="map">
+ </div>
+
+ <!--below is where I will be adding leaflet map -->
+
+
+ <script>
+
+ 	//intializing map
+
+ 	var map = L.map('map').setView([41.881,-87.623],11);
+
+ 	//basemap layer
+
+var Stamen_TonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
+	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	subdomains: 'abcd',
+	minZoom: 0,
+	maxZoom: 20,
+	ext: 'png'
+}).addTo(map);
+
+//geoJson 1 Chicago Hardship Map
+
+$.getJSON("ChicagoHardshipIndex.geojson", function(data) {
+	L.geoJson(data).addTo(map);
+});
+
+//geoJson 2 Grocery Stores
+
+$.getJSON("GroceryStoresChicago.geojson", function(data) {
+	L.geoJson(data),{
+		pointToLayer: function(feature, latlng) {
+			return new L.CircleMarker(latlng, 
+				{	radius: 3,
+					fillOpacity: 1,
+					color: '#FF6600',
+					weight: .5, 
+				});
+			}).addTo(map);
+		};
+
+
+ </script>
+
+
+
+</body>
+
+</html>
