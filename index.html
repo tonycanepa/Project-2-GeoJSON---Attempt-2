@@ -74,9 +74,8 @@ var Stamen_TonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/to
 //geoJson 1 Chicago Hardship Map
 
 $.getJSON("ChicagoHardshipIndex.geojson", function(data) {
-	L.geoJson(data),
-
-	style: function(feature){
+	L.geoJson(data, {
+		style: function(feature){
 			var conditionalColor,
 			hardship = feature.properties.HI;
 				if ( hardship > 80 ) conditionalColor = "#006837";
@@ -93,7 +92,8 @@ $.getJSON("ChicagoHardshipIndex.geojson", function(data) {
 				onEachFeature: function( feature, layer ){
 				    layer.bindPopup( "Neighborhood: " + feature.properties.CA + "<br/>" + "Hardship Index Score: " + feature.properties.HI )
 				}
-  					}  ).addTo(map);
+  					}  ).addTo(map).bringToBack();
+});
 	
 </script>
 
