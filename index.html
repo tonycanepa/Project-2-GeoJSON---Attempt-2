@@ -78,12 +78,12 @@ $.getJSON("ChicagoHardshipIndex.geojson", function(data) {
 		style: function(feature){
 			var conditionalColor,
 			hardship = feature.properties.HI;
-				if ( hardship > 80 ) conditionalColor = "#006837";
-				else if ( hardship > 60 ) conditionalColor = "#31a354";
-				else if ( hardship > 40 ) conditionalColor = "#78c679";
-				else if ( hardship > 20 ) conditionalColor = "#c2e699";
+				if ( hardship > 80 ) conditionalColor = "#b30000";
+				else if ( hardship > 60 ) conditionalColor = "#e34a33";
+				else if ( hardship > 40 ) conditionalColor = "#fc8d59";
+				else if ( hardship > 20 ) conditionalColor = "#fdcc8a";
 				else if ( hardship > 0 ) conditionalColor = "#ffffcc";
-				else conditionalColor = "#f7f7f7";  // no data
+				else conditionalColor = "#fef0d9";  // no data
 				return { 	color: "#999", 
 							weight: 1, 
 							fillColor: conditionalColor, 
@@ -108,7 +108,7 @@ $.getJSON("GroceryStoresChicago.geojson", function(data) {
 					fillOpacity:1,
 					fillColor:'red' ,
 					weight: .5,
-				});.addTo(map);
+				}.addTo(map);
 
 });
 	
