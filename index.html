@@ -90,7 +90,7 @@ $.getJSON("ChicagoHardshipIndex.geojson", function(data) {
 							fillOpacity: .6 };
 				},
 				onEachFeature: function( feature, layer ){
-				    layer.bindPopup( "Neighborhood: " + feature.properties.CA + "<br/>" + "Hardship Index Score: " + feature.properties.HI )
+				    layer.bindPopup("<strong>" + "Neighborhood: " + feature.properties.CA + "</strong><br/>" + "Hardship Index Score: " + feature.properties.HI )
 				}
   					}  ).addTo(map).bringToBack();
 });
