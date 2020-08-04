@@ -112,7 +112,8 @@ $.getJSON("GroceryStoresChicago.geojson", function(data) {
 	}, onEachFeature: function(feature,layer){
 		layer.bindPopup(feature.properties.Store_Name)
 	}		
-	}).addTo(map);
+	}).addTo(map).bringToFront();
+
 });
 	
 </script>
