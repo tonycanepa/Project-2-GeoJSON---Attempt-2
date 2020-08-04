@@ -108,11 +108,7 @@ $.getJSON("GroceryStoresChicago.geojson", function(data) {
 					fillOpacity:1,
 					fillColor:'red' ,
 					weight: .5,
-				});
-	}, onEachFeature: function(feature,layer){
-		layer.bindPopup(feature.properties.Store_Name)
-	}		
-	}).addTo(map).bringToFront();
+				});.addTo(map).bringToFront();
 
 });
 	
