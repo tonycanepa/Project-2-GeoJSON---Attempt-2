@@ -101,7 +101,18 @@ $.getJSON("ChicagoHardshipIndex.geojson", function(data) {
 //geoJSON 2 - Grocery Stores going to add as markers first before styling
 
 $.getJSON("GroceryStoresChicago.geojson", function(data) {
-	L.geoJson(data).addTo(map);
+	L.geoJson(data), {
+		pointToLayer: function(feature, latlng) {
+			return new L.CircleMarker(latlng,
+				{ radius: 2,
+					fillOpacity:1,
+					fillColor:'red' ,
+					weight: .5,
+				});
+	}, onEachFeature: function(feature,layer){
+		layer.bindPopup(feature.properties.Store_Name)
+	}		
+	}.addTo(map);
 });
 	
 </script>
