@@ -51,9 +51,13 @@
 
  //intializing map
 
- 	var map = L.map('map').setView([41.881,-87.623],11);
+ 	var map = L.map('map').setView([41.881,-87.623],11)
 
- //basemap layer
+ </script>
+
+ <!-- basemap layer -->
+
+ <script>
 
 var Stamen_TonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
 	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -63,13 +67,18 @@ var Stamen_TonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/to
 	ext: 'png'
 }).addTo(map);
 
+</script>
+
+ <script>
+
 //geoJson 1 Chicago Hardship Map
 
 $.getJSON("ChicagoHardshipIndex.geojson", function(data) {
 	L.geoJson(data).addTo(map);
 });
 
-//having trouble with changing features - uploading to github to check if GeoJSONs have loaded
+//having trouble with changing features - uploading to github to check if GeoJSONs have loaded, using just one GeoJSON
+
  </script>
 
 
